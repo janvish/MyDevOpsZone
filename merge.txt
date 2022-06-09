@@ -1,0 +1,17 @@
+Linux
+AWS EC@ Instances
+Cloud Watch services
+S3 Bucket
+Auto Scaling
+VPC Clous
+Key Pair
+Security
+Orange
+Apple
+Pear
+Guava
+banana
+Pine Apple
+Pomegranate
+Jack Fruit
+Papaya
