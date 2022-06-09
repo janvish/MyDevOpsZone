@@ -1,0 +1,6 @@
+select the files first and enter the below command - enter 
+for i in `cat`; do tar -cvzf $i.tgz $i; done
+Then paste the files and then press enter and then ctrl + d
+
+we can use the above command , like - 
+for i in `cat`; do rm -rf $i; done

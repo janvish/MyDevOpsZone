@@ -1,0 +1,92 @@
+https://techviewleo.com/install-tomcat-on-amazon-linux/
+
+sudo yum -y update
+
+
+sudo amazon-linux-extras install java-openjdk11
+
+Total download size: 46 M
+Installed size: 183 M
+Is this ok [y/d/N]: y
+
+java -version
+openjdk version "11.0.7" 2020-04-14 LTS
+OpenJDK Runtime Environment 18.9 (build 11.0.7+10-LTS)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10-LTS, mixed mode, sharing)
+
+sudo groupadd --system tomcat
+sudo useradd -d /usr/share/tomcat -r -s /bin/false -g tomcat tomcat
+
+$ getent passwd tomcat
+tomcat:x:996:994::/usr/share/tomcat:/bin/false
+
+$ getent group tomcat
+tomcat:x:994:
+
+sudo yum -y install wget
+export VER="9.0.39"
+wget https://archive.apache.org/dist/tomcat/tomcat-9/v${VER}/bin/apache-tomcat-${VER}.tar.gz
+
+sudo tar xvf apache-tomcat-${VER}.tar.gz -C /usr/share/
+
+sudo ln -s /usr/share/apache-tomcat-$VER/ /usr/share/tomcat
+
+sudo chown -R tomcat:tomcat /usr/share/tomcat
+sudo chown -R tomcat:tomcat /usr/share/apache-tomcat-$VER/ 
+
+The /usr/share/tomcat directory has the following sub-directories:
+
+bin: contains the binaries and scripts (e.g startup.sh and shutdown.sh for Unixes and Mac OS X).
+conf: contains the system-wide configuration files, such as server.xml, web.xml, and context.xml.
+webapps: contains the webapps to be deployed. You can also place the WAR (Webapp Archive) file for deployment here.
+lib: contains the Tomcat’s system-wide library JAR files, accessible by all webapps. You could also place external JAR file (such as MySQL JDBC Driver) here.
+logs: contains Tomcat’s log files. You may need to check for error messages here.
+work: Tomcat’s working directory used by JSP, for JSP-to-Servlet conversion.
+Create Tomcat Systemd service:
+
+
+=======================
+sudo tee /etc/systemd/system/tomcat.service<<EOF
+[Unit]
+Description=Tomcat Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+
+Environment=JAVA_HOME=/usr/lib/jvm/jre
+Environment='JAVA_OPTS=-Djava.awt.headless=true'
+Environment=CATALINA_HOME=/usr/share/tomcat
+Environment=CATALINA_BASE=/usr/share/tomcat
+Environment=CATALINA_PID=/usr/share/tomcat/temp/tomcat.pid
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+ExecStart=/usr/share/tomcat/bin/catalina.sh start
+ExecStop=/usr/share/tomcat/bin/catalina.sh stop
+
+[Install]
+WantedBy=multi-user.target
+EOF
+========================
+
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo systemctl enable tomcat
+sudo systemctl status tomcat
+
+===========================
+$ systemctl status tomcat
+● tomcat.service - Tomcat Server
+   Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; vendor preset: disabled)
+   Active: active (running) since Sat 2020-10-10 11:18:40 UTC; 49s ago
+ Main PID: 30574 (java)
+   CGroup: /system.slice/tomcat.service
+           └─30574 /usr/lib/jvm/jre/bin/java -Djava.util.logging.config.file=/usr/share/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.j...
+
+Oct 10 11:18:40 ip-172-31-39-10.eu-west-1.compute.internal systemd[1]: Starting Tomcat Server...
+Oct 10 11:18:40 ip-172-31-39-10.eu-west-1.compute.internal systemd[1]: Started Tomcat Server.
+=====================================
+
+
+

@@ -1,0 +1,8 @@
+Linux
+AWS EC@ Instances
+Cloud Watch services
+S3 Bucket
+Auto Scaling
+VPC Clous
+Key Pair
+Security

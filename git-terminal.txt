@@ -1,0 +1,239 @@
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work
+$ git config --global user.name "janvish"
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work
+$ git config --global user.email "visu04b8@gmail.com"
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work
+$ git pull
+fatal: not a git repository (or any of the parent directories): .git
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work
+$ ls -la
+total 20
+drwxr-xr-x 1 JhansiViswanath 197121 0 Jun  8 08:25 ./
+drwxr-xr-x 1 JhansiViswanath 197121 0 Jun  8 08:25 ../
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work
+$ git init
+Initialized empty Git repository in C:/Users/JhansiViswanath/Desktop/git-work/.git/
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ ls -la
+total 24
+drwxr-xr-x 1 JhansiViswanath 197121 0 Jun  8 08:28 ./
+drwxr-xr-x 1 JhansiViswanath 197121 0 Jun  8 08:25 ../
+drwxr-xr-x 1 JhansiViswanath 197121 0 Jun  8 08:28 .git/
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ ls -la
+total 25
+drwxr-xr-x 1 JhansiViswanath 197121   0 Jun  8 08:29  ./
+drwxr-xr-x 1 JhansiViswanath 197121   0 Jun  8 08:25  ../
+drwxr-xr-x 1 JhansiViswanath 197121   0 Jun  8 08:28  .git/
+-rw-r--r-- 1 JhansiViswanath 197121 453 May 18 15:27 'Sharath Intro.txt'
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git add .
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Sharath Intro.txt
+
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git commit -m "First commit"
+[master (root-commit) a07e32a] First commit
+ 1 file changed, 16 insertions(+)
+ create mode 100644 Sharath Intro.txt
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git logs
+git: 'logs' is not a git command. See 'git --help'.
+
+The most similar command is
+        log
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git log
+commit a07e32a16d6cf251228451b1b411c8c1ae2246d5 (HEAD -> master)
+Author: janvish <visu04b8@gmail.com>
+Date:   Wed Jun 8 08:30:33 2022 +0530
+
+    First commit
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git remote add origin https://github.com/janvish/MyDevOpsZone.git
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git push origin master
+To https://github.com/janvish/MyDevOpsZone.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/janvish/MyDevOpsZone.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git push --help
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git push origin master
+To https://github.com/janvish/MyDevOpsZone.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/janvish/MyDevOpsZone.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git fetch origin master
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 4.16 KiB | 11.00 KiB/s, done.
+From https://github.com/janvish/MyDevOpsZone
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git push origin master
+To https://github.com/janvish/MyDevOpsZone.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/janvish/MyDevOpsZone.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git pull origin master
+From https://github.com/janvish/MyDevOpsZone
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git pull git@github.com:janvish/MyDevOpsZone.git
+The authenticity of host 'github.com (13.234.210.38)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git pull https://github.com/janvish/MyDevOpsZone.git
+From https://github.com/janvish/MyDevOpsZone
+ * branch            HEAD       -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git clone https://github.com/janvish/MyDevOpsZone.git
+Cloning into 'MyDevOpsZone'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (6/6), 4.18 KiB | 1.39 MiB/s, done.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git pull https://github.com/janvish/MyDevOpsZone.git
+From https://github.com/janvish/MyDevOpsZone
+ * branch            HEAD       -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ git pull git@github.com:janvish/MyDevOpsZone.git
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ cd .ssh
+bash: cd: .ssh: No such file or directory
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/Desktop/git-work (master)
+$ cd ~
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~
+$ cd .ssh
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ ls
+known_hosts  known_hosts.old
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ cat id_rsa.pub | clip
+cat: id_rsa.pub: No such file or directory
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ cd known_hosts
+bash: cd: known_hosts: Not a directory
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/JhansiViswanath/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/JhansiViswanath/.ssh/id_rsa
+Your public key has been saved in /c/Users/JhansiViswanath/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:mgwEQo/2XmjJvJbifkeSdsMfUSyFycaXflSVzTcuBCE JhansiViswanath@DESKTOP-HMUPB84
+The key's randomart image is:
++---[RSA 3072]----+
+|o..   o =E.o+..oo|
+| .o.   B =.. . o+|
+| o .. . = . . . o|
+|. +.o  . . . . . |
+|   B+.  S .   .  |
+|  o++B +         |
+| ..=+ * .        |
+|. o. . .         |
+|.o. .            |
++----[SHA256]-----+
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ ls
+id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ cat id_rsa.pub | clip
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ git pull https://github.com/janvish/MyDevOpsZone.git
+fatal: not a git repository (or any of the parent directories): .git
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ git pull git@github.com:janvish/MyDevOpsZone.git
+fatal: not a git repository (or any of the parent directories): .git
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+JhansiViswanath@DESKTOP-HMUPB84 MINGW64 ~/.ssh
+$
